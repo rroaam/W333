@@ -174,6 +174,10 @@ struct HomeView: View {
                 ForEach(filteredCaptures) { capture in
                     CaptureCard(capture: capture)
                         .onTapGesture {
+                            // Haptic + sound feedback for opening detail
+                            SoundManager.shared.playCardTap()
+                            HapticManager.shared.cardTap()
+
                             selectedCapture = capture
                             showingDetail = true
                         }
@@ -195,7 +199,12 @@ struct FilterChip: View {
     let action: () -> Void
 
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            // Haptic + sound for filter selection
+            SoundManager.shared.playFilterTap()
+            HapticManager.shared.filterTap()
+            action()
+        }) {
             Text(title)
                 .font(DesignSystem.Typography.caption)
                 .foregroundColor(isSelected ? DesignSystem.Colors.background : color)

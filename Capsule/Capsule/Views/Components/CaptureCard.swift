@@ -57,6 +57,10 @@ struct CaptureCard: View {
         .animation(.easeInOut(duration: 0.1), value: isPressed)
         .onLongPressGesture(minimumDuration: .infinity, pressing: { pressing in
             isPressed = pressing
+            if pressing {
+                // Haptic feedback when pressing down on card
+                HapticManager.shared.lightTap()
+            }
         }, perform: {})
     }
 }

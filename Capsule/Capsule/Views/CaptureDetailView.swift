@@ -147,21 +147,38 @@ struct CaptureDetailView: View {
             // Playback controls
             HStack(spacing: DesignSystem.Spacing.xl) {
                 // Skip back
-                Button(action: { player.skipBackward() }) {
+                Button(action: {
+                    SoundManager.shared.playSkip()
+                    HapticManager.shared.skip()
+                    player.skipBackward()
+                }) {
                     Image(systemName: "gobackward.10")
                         .font(.system(size: 24, weight: .light))
                         .foregroundColor(DesignSystem.Colors.mutedText)
                 }
 
                 // Play/Pause
-                Button(action: { player.togglePlayback() }) {
+                Button(action: {
+                    if player.isPlaying {
+                        SoundManager.shared.playPlaybackPause()
+                        HapticManager.shared.playbackPaused()
+                    } else {
+                        SoundManager.shared.playPlaybackStart()
+                        HapticManager.shared.playbackStarted()
+                    }
+                    player.togglePlayback()
+                }) {
                     Image(systemName: player.isPlaying ? "pause.circle.fill" : "play.circle.fill")
                         .font(.system(size: 56))
                         .foregroundColor(DesignSystem.Colors.primaryText)
                 }
 
                 // Skip forward
-                Button(action: { player.skipForward() }) {
+                Button(action: {
+                    SoundManager.shared.playSkip()
+                    HapticManager.shared.skip()
+                    player.skipForward()
+                }) {
                     Image(systemName: "goforward.10")
                         .font(.system(size: 24, weight: .light))
                         .foregroundColor(DesignSystem.Colors.mutedText)
@@ -281,15 +298,19 @@ struct CaptureDetailView: View {
     // MARK: - Actions
 
     private func shareCapture() {
+        HapticManager.shared.mediumTap()
         // TODO: Implement sharing in future phase
     }
 
     private func archiveCapture() {
+        SoundManager.shared.playArchive()
+        HapticManager.shared.success()
         captureStore.archiveCapture(capture)
         dismiss()
     }
 
     private func deleteCapture() {
+        SoundManager.shared.feedbackDelete()
         captureStore.deleteCapture(capture)
         dismiss()
     }

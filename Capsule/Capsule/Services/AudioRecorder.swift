@@ -19,6 +19,14 @@ import Combine
 /// Manages audio recording for voice captures
 class AudioRecorder: NSObject, ObservableObject {
 
+    // MARK: - Constants
+
+    /// Maximum recording duration: 3 minutes (180 seconds)
+    static let maxDuration: TimeInterval = 180
+
+    /// Warning threshold: 30 seconds before max (2:30)
+    static let warningThreshold: TimeInterval = 150
+
     // MARK: - Published Properties (SwiftUI will react to these changes)
 
     /// Is the recorder currently recording?
@@ -32,6 +40,20 @@ class AudioRecorder: NSObject, ObservableObject {
 
     /// Any error that occurred during recording
     @Published var errorMessage: String?
+
+    /// True when approaching max duration (last 30 seconds)
+    @Published var isApproachingLimit = false
+
+    /// True when recording was auto-stopped due to max duration
+    @Published var didReachMaxDuration = false
+
+    // MARK: - Callbacks
+
+    /// Called when max duration is reached and recording auto-stops
+    var onMaxDurationReached: (() -> Void)?
+
+    /// Called when entering the warning zone (last 30 seconds)
+    var onApproachingLimit: (() -> Void)?
 
     // MARK: - Private Properties
 
@@ -218,12 +240,31 @@ class AudioRecorder: NSObject, ObservableObject {
 
     /// Start the timer that updates duration and audio levels
     private func startTimer() {
+        // Reset limit tracking
+        isApproachingLimit = false
+        didReachMaxDuration = false
+
         // Update every 0.1 seconds for smooth UI updates
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self, let recorder = self.audioRecorder, self.isRecording else { return }
 
             // Update duration
             self.currentDuration = recorder.currentTime
+
+            // Check for warning threshold (last 30 seconds)
+            if self.currentDuration >= Self.warningThreshold && !self.isApproachingLimit {
+                self.isApproachingLimit = true
+                self.onApproachingLimit?()
+            }
+
+            // Check for max duration - auto-stop at 3 minutes
+            if self.currentDuration >= Self.maxDuration {
+                self.didReachMaxDuration = true
+                self.onMaxDurationReached?()
+                // Don't call stopRecording here - let the view handle it
+                // to ensure proper state management
+                return
+            }
 
             // Update audio levels for visualization
             recorder.updateMeters()

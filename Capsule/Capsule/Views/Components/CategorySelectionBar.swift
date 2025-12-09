@@ -51,12 +51,10 @@ struct CategoryButton: View {
     let onPress: () -> Void
     let onRelease: () -> Void
 
-    /// Haptic feedback generator
-    private let haptics = UIImpactFeedbackGenerator(style: .light)
-
     var body: some View {
         Button(action: {
-            haptics.impactOccurred()
+            // Heavy haptic + sound feedback for category selection
+            SoundManager.shared.feedbackCategoryTap()
             onTap()
         }) {
             VStack(spacing: DesignSystem.Spacing.xs) {

@@ -14,6 +14,8 @@
 		A11111110000000000000005 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000005 /* AudioRecorder.swift */; };
 		A11111110000000000000006 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000006 /* AudioPlayer.swift */; };
 		A11111110000000000000007 /* CaptureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000007 /* CaptureStore.swift */; };
+		A11111110000000000000018 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000018 /* HapticManager.swift */; };
+		A11111110000000000000019 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000019 /* SoundManager.swift */; };
 		A11111110000000000000008 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000008 /* HomeView.swift */; };
 		A11111110000000000000009 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000009 /* RecordingView.swift */; };
 		A11111110000000000000010 /* CaptureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000010 /* CaptureDetailView.swift */; };
@@ -34,6 +36,8 @@
 		A10000000000000000000005 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		A10000000000000000000006 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		A10000000000000000000007 /* CaptureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureStore.swift; sourceTree = "<group>"; };
+		A10000000000000000000018 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		A10000000000000000000019 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		A10000000000000000000008 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A10000000000000000000009 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		A10000000000000000000010 /* CaptureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureDetailView.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				A10000000000000000000005 /* AudioRecorder.swift */,
 				A10000000000000000000006 /* AudioPlayer.swift */,
 				A10000000000000000000007 /* CaptureStore.swift */,
+				A10000000000000000000018 /* HapticManager.swift */,
+				A10000000000000000000019 /* SoundManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -221,6 +227,8 @@
 				A11111110000000000000005 /* AudioRecorder.swift in Sources */,
 				A11111110000000000000006 /* AudioPlayer.swift in Sources */,
 				A11111110000000000000007 /* CaptureStore.swift in Sources */,
+				A11111110000000000000018 /* HapticManager.swift in Sources */,
+				A11111110000000000000019 /* SoundManager.swift in Sources */,
 				A11111110000000000000008 /* HomeView.swift in Sources */,
 				A11111110000000000000009 /* RecordingView.swift in Sources */,
 				A11111110000000000000010 /* CaptureDetailView.swift in Sources */,
