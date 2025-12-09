@@ -8,6 +8,7 @@ import { CategoryBadge } from './CaptureCard'
 import { useAudioRecorder } from '@/hooks/useAudioRecorder'
 import { formatDuration, haptic, playSound } from '@/lib/utils'
 import { useCaptureStore } from '@/lib/store'
+import { useAuthStore } from '@/lib/auth'
 
 const MAX_DURATION = 180
 
@@ -29,7 +30,8 @@ export function RecordingModal({ category, isOpen, onClose }: RecordingModalProp
     cancelRecording,
   } = useAudioRecorder()
 
-  const addCapture = useCaptureStore((s) => s.addCapture)
+  const { addCapture, uploadToCloud } = useCaptureStore()
+  const { user, isConfigured } = useAuthStore()
   const [isSaving, setIsSaving] = useState(false)
 
   // Start recording when modal opens
@@ -49,8 +51,8 @@ export function RecordingModal({ category, isOpen, onClose }: RecordingModalProp
       // Create object URL for local playback
       const audioUrl = URL.createObjectURL(blob)
 
-      addCapture({
-        user_id: 'local',
+      const capture = await addCapture({
+        user_id: user?.id || 'local',
         category,
         audio_url: audioUrl,
         duration,
@@ -62,6 +64,15 @@ export function RecordingModal({ category, isOpen, onClose }: RecordingModalProp
 
       haptic('heavy')
       playSound('success')
+
+      // Upload to cloud if user is signed in
+      if (user?.id && isConfigured) {
+        try {
+          await uploadToCloud(user.id, capture, blob)
+        } catch (e) {
+          console.error('Cloud upload failed, keeping local copy:', e)
+        }
+      }
 
       // Close after brief delay
       setTimeout(() => {
