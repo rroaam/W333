@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#111111"/>
+  <!-- Dot matrix pattern representing a capsule/voice wave -->
+  <g fill="#FFE066">
+    <!-- Top row - IDEA yellow -->
+    <circle cx="160" cy="128" r="16"/>
+    <circle cx="208" cy="128" r="16"/>
+    <circle cx="256" cy="128" r="16"/>
+    <circle cx="304" cy="128" r="16"/>
+    <circle cx="352" cy="128" r="16"/>
+  </g>
+  <g fill="#66D9FF">
+    <!-- Second row - VISION cyan -->
+    <circle cx="136" cy="192" r="16"/>
+    <circle cx="184" cy="192" r="16"/>
+    <circle cx="232" cy="192" r="16"/>
+    <circle cx="280" cy="192" r="16"/>
+    <circle cx="328" cy="192" r="16"/>
+    <circle cx="376" cy="192" r="16"/>
+  </g>
+  <g fill="#66FF99">
+    <!-- Middle rows - REFLECT green (tallest) -->
+    <circle cx="112" cy="256" r="16"/>
+    <circle cx="160" cy="256" r="16"/>
+    <circle cx="208" cy="256" r="16"/>
+    <circle cx="256" cy="256" r="20"/>
+    <circle cx="304" cy="256" r="16"/>
+    <circle cx="352" cy="256" r="16"/>
+    <circle cx="400" cy="256" r="16"/>
+  </g>
+  <g fill="#FF8566">
+    <!-- Fourth row - PLANS coral -->
+    <circle cx="136" cy="320" r="16"/>
+    <circle cx="184" cy="320" r="16"/>
+    <circle cx="232" cy="320" r="16"/>
+    <circle cx="280" cy="320" r="16"/>
+    <circle cx="328" cy="320" r="16"/>
+    <circle cx="376" cy="320" r="16"/>
+  </g>
+  <g fill="#FFFFFF" opacity="0.6">
+    <!-- Bottom row - white/gray -->
+    <circle cx="160" cy="384" r="16"/>
+    <circle cx="208" cy="384" r="16"/>
+    <circle cx="256" cy="384" r="16"/>
+    <circle cx="304" cy="384" r="16"/>
+    <circle cx="352" cy="384" r="16"/>
+  </g>
+</svg>

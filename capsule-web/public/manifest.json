@@ -1,0 +1,40 @@
+{
+  "name": "Capsule",
+  "short_name": "Capsule",
+  "description": "Smart voice capture for your ideas, visions, reflections, and plans",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Record Idea",
+      "short_name": "Idea",
+      "description": "Record a new idea",
+      "url": "/?category=IDEA"
+    },
+    {
+      "name": "Record Vision",
+      "short_name": "Vision",
+      "description": "Record a vision",
+      "url": "/?category=VISION"
+    }
+  ]
+}

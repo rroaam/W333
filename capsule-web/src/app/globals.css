@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for Capsule */
+:root {
+  --bg: #111111;
+  --surface: #1A1A1A;
+  --stroke: #333333;
+  --muted: #666666;
+  --idea: #FFE066;
+  --vision: #66D9FF;
+  --reflect: #66FF99;
+  --plans: #FF8566;
+}
+
+/* Force dark mode */
+html {
+  background-color: var(--bg);
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg);
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mono font for numbers/timers */
+.font-mono {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+}
+
+/* Card style */
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+}
+
+/* Dot matrix pattern */
+.dot-matrix {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+/* Glow effect */
+.glow {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.glow-idea { box-shadow: 0 0 20px rgba(255, 224, 102, 0.3); }
+.glow-vision { box-shadow: 0 0 20px rgba(102, 217, 255, 0.3); }
+.glow-reflect { box-shadow: 0 0 20px rgba(102, 255, 153, 0.3); }
+.glow-plans { box-shadow: 0 0 20px rgba(255, 133, 102, 0.3); }
+
+/* Recording pulse animation */
+@keyframes recording-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-recording-pulse {
+  animation: recording-pulse 1s ease-in-out infinite;
+}
+
+/* Button press effect */
+.btn-press:active {
+  transform: scale(0.95);
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe area padding for mobile */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 20px);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+}
+
+/* Touch feedback */
+@media (hover: none) {
+  button:active, .btn-press:active {
+    opacity: 0.8;
+  }
+}
